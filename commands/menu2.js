@@ -26,144 +26,82 @@ async function helpCommand(sock, chatId, message) {
     const ping = Math.round((end - start) / 2);
     const uptimeFormatted = formatTime(process.uptime());
 
-    const helpMessage = `
-┏━━━━━━━━━━━━━━━━━━┓
-┃ 💻Commands Menu💻
-┗━━━━━━━━━━━━━━━━━━┛
- 📝 _Owner Information_
-  ━━━━━━━━━━━━━━━━━━
-📍 *Owner:* ${settings.botOwner}
-⏳ *Uptime:* ${uptimeFormatted}
-🕐 *Time:* ${new Date().toLocaleString()}
-⚡ *Speed:* ${ping}
+  const helpMessage = `
+╔══════════════════════════════════╗
+        🌚  ${settings.botName}  🌚
+          
+╚══════════════════════════════════╝
 
-🔐 *OTP FETCHER* 🔐
-┏━━━━━━━━━━━━━┓
-┃ 🌍 .otp countries
-┃ 📱 .otp services
-┃ 🔄 .otp get <country> <service>
-┃ 📥 .otp check
-┃ 🔄 .otp auto
-┃ 📊 .otp status
-┃ 🧹 .otp clear
-┃ 📋 .otp recent
-┃ 🔍 .otp test
-┃
-┃ 📝 *Examples:*
-┃ • .otp get US whatsapp
-┃ • .otp get IN telegram
-┃ • .otp get GB google
-┗━━━━━━━━━━━━━┛
+👑 Owner: ${settings.botOwner}
+⚡ Speed: ${ping} ms
+⏳ Uptime: ${uptimeFormatted}
+🕰️ Time: ${new Date().toLocaleString()}
 
-✨ OWNER COMMANDS* ✨
-┏━━━━━━━━━━━━━┓
-┃ 🔴 .ban | 🔵 .unban
-┃ ✅️ .sudo | ❌️ .delsudo 
-┃ 👑 .promote | 👥 .demote
-┃ 👋 .kick | 🗑️ .delete
-┃ 🚫 .antilink | 🚫 .antibadword
-┃ 👥 .tag | 👥 .tagall
-┃ 🤖 .chatbot | 🔗 .resetlink
-┃ 👋 .welcome | 👋 .goodbye
-┗━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🌍 *GENERAL COMMANDS* 🌍
-┏━━━━━━━━━━━━━┓
-┃ 📜 .menu | 📶 .ping
-┃ ⏱️ .runtime | 👑 .owner
-┃ 😂 .joke | 💬 .quote
-┃ 🧠 .fact | 🌦️ .weather
-┃ 📰 .news | 💌 .attp
-┃ 🎵 .lyrics | 🎱 .8ball
-┃ ℹ️ .groupinfo | 👮 .admins
-┃ 🔍 .jid | 📸 .ss
-┃ 🌍 .trt | 📞 .vv
-┗━━━━━━━━━━━━━┛
+🥶  OTP VAULT
+╭──────────────────────────╮
+│ 🌍 .otp countries
+│ 📱 .otp services
+│ 🔄 .otp get <country> <service>
+│ 📥 .otp check
+│ 📊 .otp status
+│ 🧹 .otp clear
+│ 📋 .otp recent
+╰──────────────────────────╯
 
-⚙️ *SETTINGS* ⚙️
-┏━━━━━━━━━━━━━┓
-┃ 🌐 .public | 🔐 .private
-┃ 🟢 .autostatus | 📖 .autoread
-┃ 🧹 .clearsession | 🛡️ .antidelete
-┃ 💬 .autoreact | 🖼️ .getpp
-┃ 📸 .setpp | 📜 .autobio
-┃ ⌨️ .autotyping | 🎙️ .autorecording
-┗━━━━━━━━━━━━━┛
+🤓  COMMAND CENTER
+╭──────────────────────────╮
+│ 📜 .menu      📶 .ping
+│ ⏱️ .runtime    👑 .owner
+│ 😂 .joke      💬 .quote
+│ 🧠 .fact      🌦️ .weather
+│ 📰 .news      🎱 .8ball
+│ 📸 .ss        🔍 .jid
+╰──────────────────────────╯
 
-🎨 *STICKERS* 🎨
-┏━━━━━━━━━━━━━┓
-┃ 🌀 .blur | 🖼️ .simage
-┃ 🌟 .sticker | 🐯 .tgsticker
-┃ 🤣 .meme | 🎯 .take
-┃ 🔀 .emojimix
-┗━━━━━━━━━━━━━┛
+🥵  ADMIN CONTROL
+╭──────────────────────────╮
+│ 🔴 .ban        🔵 .unban
+│ 👑 .promote    👥 .demote
+│ 👋 .kick       🗑️ .delete
+│ 🚫 .antilink   🚫 .antibadword
+│ 🤖 .chatbot    🔗 .resetlink
+│ 🛡️ .sudo       ❌ .delsudo
+╰──────────────────────────╯
 
-┏━━━━━━━━━━━━━┓
-┃ 🎶 DOWNLOAD COMMANDS
-┃
-┃ ▶️ .play <song> 
-┃ 🎥 .video <name|url>
-┃ 🎵 .song <name>
-┃ 📥 .ytmp3 <url>
-┃ 📥 .ytmp4 <url>
-┃ ▶️ .fb <url>
-┣━━━━━━━━━━━━━┫
-┃ 🔴 .ban | 🔵 .unban
-┃ 👑 .promote | 👥 .demote
-┃ 👋 .kick | 🗑️ .delete
-┃ 🚫 .antilink | 🚫 .antibadword
-┃ 👥 .tag | 👥 .tagall
-┃ 🤖 .chatbot | 🔗 .resetlink
-┃ 👋 .welcome | 👋 .goodbye
-┃ 🛡️ .sudo | ❌ .delsudo
-┗━━━━━━━━━━━━━┛
+🌚  AI LAB
+╭──────────────────────────╮
+│ 🤖 .gpt      💡 .gptgo
+│ 🧬 .gemini   🧠 .flux
+│ 🎨 .imagine
+╰──────────────────────────╯
 
-🎮 *GAMES* 🎮
-┏━━━━━━━━━━━━━┓
-┃ ❌⭕ .tictactoe | 🎯 .hangman
-┃ ❓ .guess | 🧠 .trivia
-┃ ✍️ .answer | 🤐 .truth
-┃ 😈 .dare
-┗━━━━━━━━━━━━━┛
+🥸  ELITE FUN ZONE
+╭──────────────────────────╮
+│ 💘 .compliment   😡 .insult
+│ 😍 .flirt        💋 .kiss
+│ 🚢 .ship         😈 .simp
+│ 🧠 .mindread     👻 .ghost
+│ 💣 .explode      🌈 .gaycheck
+╰──────────────────────────╯
 
-🤖 *AI & SEARCH* 🤖
-┏━━━━━━━━━━━━━┓
-┃ 🤖 .gpt | 💡 .gptgo
-┃ 🧬 .gemini | 🧠 .flux
-┃ 🎨 .imagine
-┗━━━━━━━━━━━━━┛
+🎮  GAME ARENA
+╭──────────────────────────╮
+│ ❌⭕ .tictactoe   🎯 .hangman
+│ ❓ .guess        🧠 .trivia
+│ 😈 .dare         🤐 .truth
+╰──────────────────────────╯
 
-🎭 *FUN ZONE* 🎭
-┏━━━━━━━━━━━━━┓
-┃ 💘 .compliment | 😡 .insult
-┃ 😍 .flirt | 💋 .kiss
-┃ 📜 .shayari | 🌙 .goodnight
-┃ 🌹 .roseday | 🎭 .character
-┃ ☠️ .wasted | 🚢 .ship
-┃ 😈 .simp | 🤪 .stupid
-┃ 🧠 .brainwash | 🐔 .detect
-┃ 👻 .ghost | 🧠 .mindread
-┃ 💩 .toilet | 📞 .callmom
-┃ 💘 .crush | 🪞 .mirror
-┃ 💣 .explode | 🕵️ .spy
-┃ 💨 .bombgas | 🛏️ .bedrate
-┃ 🤰 .pregnancycheck | 💘 .lovecheck
-┃ 🌈 .gaycheck | 🔥 .hornycheck
-┃ 👑 .shafi
-┗━━━━━━━━━━━━━┛
+🚀  SYSTEM CORE
+╭──────────────────────────╮
+│ 🔄 .update
+╰──────────────────────────╯
 
-🧰 *MAKER* 🧰
-┏━━━━━━━━━━━━━┓
-┃ 🔥 .fire | ⚡ .thunder
-┃ ❄️ .ice | 🌫️ .snow
-┃ 👹 .devil | 💜 .purple
-┃ 💡 .light
-┗━━━━━━━━━━━━━┛
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-🚀 *SYSTEM* 🚀
-┏━━━━━━━━━━━━━┓
-┃ 🔄 .update 
-┗━━━━━━━━━━━━━┛
+💎  Premium Access Granted
+🔥  Powered by ${settings.botName}
 `;
 
     try {
